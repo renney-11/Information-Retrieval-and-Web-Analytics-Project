@@ -1,5 +1,20 @@
 Part 1:
 
+1. Pre processing the doc
+For the fields title and description:
+- Converted to lowercase
+- Removed punctuation using pythons string library
+- Tokenized words
+- Removed stopwrds by using NLTK
+- Applied stemming using NLTK PorterSummer
+
+2. Returning all fields for future queries
+made sure each document keeps all important fields: pid, title, description, brand, category, sub_category, product_details, seller, 
+out_of_stock, selling_price, discount, actual_price, average_rating, and url.
+For title and description, preprocessing: lowercase, remove punctuation, tokenize, remove stopwords, and stem.
+For the other fields, they are stored in the Document object so they can be used directly for filtering, ranking, or displaying results.
+This ensures the system can return all requested information for any query.
+
 3. Handling category, sub_category, brand, product_details, seller
 My approach would be to handle each field separately rather than merging them into a single text field.
 This is beaucuse these fields are distinctive and carry different types of information relevant to retrieval.
@@ -14,6 +29,6 @@ of losing the distinctiveness of each field which can result in worse retriaval 
 4. For the fields out_of_stock, selling_price, discount, actual_price, and average_rating, I would not to index them as textual terms.
 Beacuse these fields represants boolean or numeric attributes, not free text. By keeping them in their types the filtering would be more
 efficient. Ex: selling_price and actual_price are numeric, enabling price-based queries, discount is numeric for discount-based filtering,
- average_rating is numeric to support ranking by rating, and out_of_stock is boolean for availability checks.
- Treating them as text would make numerical comparisons inefficient and reduce retrieval effectiveness.
- The main trade-off is that handling these fields requires slightly more complex query processing compared to pure text indexing.
+average_rating is numeric to support ranking by rating, and out_of_stock is boolean for availability checks.
+Treating them as text would make numerical comparisons inefficient and reduce retrieval effectiveness.
+The main trade-off is that handling these fields requires slightly more complex query processing compared to pure text indexing.
