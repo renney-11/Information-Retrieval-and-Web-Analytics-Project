@@ -10,3 +10,10 @@ The con on the other hand is that the indes becomes more complex and requires th
 fields quring a query proccess.
 An alternative approach would be to merge all fields to a single text field, this would simplify the index but there is a risk
 of losing the distinctiveness of each field which can result in worse retriaval precision.
+
+4. For the fields out_of_stock, selling_price, discount, actual_price, and average_rating, I would not to index them as textual terms.
+Beacuse these fields represants boolean or numeric attributes, not free text. By keeping them in their types the filtering would be more
+efficient. Ex: selling_price and actual_price are numeric, enabling price-based queries, discount is numeric for discount-based filtering,
+ average_rating is numeric to support ranking by rating, and out_of_stock is boolean for availability checks.
+ Treating them as text would make numerical comparisons inefficient and reduce retrieval effectiveness.
+ The main trade-off is that handling these fields requires slightly more complex query processing compared to pure text indexing.
