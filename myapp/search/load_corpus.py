@@ -58,7 +58,23 @@ def _build_corpus(df: pd.DataFrame) -> Dict[str, Document]:
         row['title'] = preprocess_text(row.get('title', ''))
         row['description'] = preprocess_text(row.get('description', ''))
 
-        doc = Document(**row.to_dict())
+        # Create Doc object with all fields
+        doc = Document(
+            pid=row.get('pid'),
+            title=row.get('title'),
+            description=row.get('description'),
+            brand=row.get('brand'),
+            category=row.get('category'),
+            sub_category=row.get('sub_category'),
+            product_details=row.get('product_details'),
+            seller=row.get('seller'),
+            out_of_stock=row.get('out_of_stock'),
+            selling_price=row.get('selling_price'),
+            discount=row.get('discount'),
+            actual_price=row.get('actual_price'),
+            average_rating=row.get('average_rating'),
+            url=row.get('url')
+        )
         corpus[doc.pid] = doc
     return corpus
 
