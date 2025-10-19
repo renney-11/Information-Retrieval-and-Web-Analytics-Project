@@ -1,0 +1,12 @@
+Part 1:
+
+3. Handling category, sub_category, brand, product_details, seller
+My approach would be to handle each field separately rather than merging them into a single text field.
+This is beaucuse these fields are distinctive and carry different types of information relevant to retrieval.
+By indexing them separately the search system can assign different weights to each field, which helps rank 
+results more accurately based on which specific fields match the user's query.
+The pros is that it improves retrieval accuracy and gives us more flexibility when handling queries.
+The con on the other hand is that the indes becomes more complex and requires the search system to handle multiple 
+fields quring a query proccess.
+An alternative approach would be to merge all fields to a single text field, this would simplify the index but there is a risk
+of losing the distinctiveness of each field which can result in worse retriaval precision.
